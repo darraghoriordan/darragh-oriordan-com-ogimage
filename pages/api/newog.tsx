@@ -1,28 +1,40 @@
 /* eslint-disable @next/next/no-img-element */
-// /pages/api/og.tsx
-
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 import React from "react";
-import pic from "profile-pic.jpg";
 export const config = {
   runtime: "experimental-edge",
 };
+
+const bgColors = [
+  "bg-amber-500",
+  "bg-sky-500",
+  "bg-rose-500",
+  "bg-emerald-500",
+];
 
 export default function handler(req: NextRequest): ImageResponse {
   try {
     const { searchParams } = new URL(req.url);
 
     const hasTitle = searchParams.has("title");
+
+    // a string with 100 random characters
+    const longString = Array.from(
+      { length: 60 },
+      () => Math.random().toString(36)[2]
+    ).join(" ");
+
     const title = hasTitle
-      ? searchParams.get("title")?.slice(0, 100)
-      : "My default title is the longss sdfsdf sdfsdf sdsd fsd sdfsdf sd sdfsdfsdf";
-    //"My default title";
+      ? searchParams.get("title")?.slice(0, 120)
+      : longString;
+
+    const randomBgColor = bgColors[Math.floor(Math.random() * bgColors.length)];
 
     const response = new ImageResponse(
       (
         <div
-          tw="flex flex-col bg-amber-500 justify-between pt-15 px-10 pb-5"
+          tw={`flex flex-col ${randomBgColor} justify-between pt-15 px-10 pb-5`}
           style={{ width: "1200px", height: "630px" }}
         >
           <div tw="flex text-7xl mb-10 grow mx-auto">
