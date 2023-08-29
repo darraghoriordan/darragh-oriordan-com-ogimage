@@ -34,13 +34,21 @@ export function OgComponent({
 
   const validTitle = title ? title?.slice(0, 100) : defaultTitle;
 
-  const DescriptionElement = description ? (
+  let DescriptionElement: React.ReactElement | null = description ? (
     <div tw="flex text-4xl leading-normal mt-16 break-all">
       {description?.slice(0, 250)}
     </div>
   ) : (
     <AlternateDescription />
   );
+
+  if (validTitle.length > 60) {
+    DescriptionElement = (
+      <div tw="flex text-4xl font-bold mt-16 break-all flex-wrap leading-relaxed">
+        Read More{" >>>"}
+      </div>
+    );
+  }
 
   return (
     <div
