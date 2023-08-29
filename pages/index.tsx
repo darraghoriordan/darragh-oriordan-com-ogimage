@@ -1,7 +1,13 @@
+"use client";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { OgComponent } from "../components/OgComponent";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const { title, description } = router.query;
+
   return (
     <div>
       <Head>
@@ -11,7 +17,11 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>Welcome to og image</h1>
+        <OgComponent
+          title={title as string}
+          description={description as string}
+          image={"/gray-profile-pic.jpg"}
+        />
       </main>
     </div>
   );
