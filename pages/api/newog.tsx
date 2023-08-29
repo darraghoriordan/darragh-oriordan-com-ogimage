@@ -59,12 +59,7 @@ export default async function handler(
         >
           <div tw="flex flex-col justify-center max-w-[700px] my-15 mx-10 grow-0">
             <div tw="text-7xl flex-wrap ">{title}</div>
-            <div tw="text-2xl mt-16 flex-wrap grow">
-              This is a very long bit of test that turns into text.This is a
-              very long bit of test that turns into text.This is a very long bit
-              of test that turns into text.This is a very long bit of test that
-              turns into text.This is a very long bit of test that turns into
-            </div>
+            <div tw="text-2xl mt-16 flex-wrap grow">{description}</div>
           </div>
           <div tw="flex flex-col justify-center my-15 mx-15">
             <div
