@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
-import Image from "next/image";
 import { NextRequest } from "next/server";
-import darraghProfileImage from "../../public/profile-pic.jpg";
 import React from "react";
 export const config = {
   runtime: "edge",
@@ -39,11 +37,11 @@ export default async function handler(
     ).join(" ");
 
     const title = searchParams.has("title")
-      ? searchParams.get("title")?.slice(0, 120)
+      ? searchParams.get("title")?.slice(0, 100)
       : longString;
 
     const description = searchParams.has("description")
-      ? searchParams.get("description")?.slice(0, 120)
+      ? searchParams.get("description")?.slice(0, 350)
       : longString;
     const randomBgColor = "bg-neutral-900"; //bgColors[Math.floor(Math.random() * bgColors.length)];
 
@@ -60,7 +58,7 @@ export default async function handler(
           }}
         >
           <div tw="flex flex-col justify-center max-w-[700px] my-15 mx-10 grow-0">
-            <div tw="text-7xl flex-wrap grow">{title}</div>
+            <div tw="text-7xl flex-wrap ">{title}</div>
             <div tw="text-2xl mt-16 flex-wrap grow">
               This is a very long bit of test that turns into text.This is a
               very long bit of test that turns into text.This is a very long bit
